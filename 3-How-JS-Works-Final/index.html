@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Section 3: How JavaScript Works Behind the Scenes</title>
+    </head>
+
+    <body>
+        <h1>Section 3: How JavaScript Works Behind the Scenes</h1>
+        
+        <h4>1. Lecture: Hoisting </h4>
+        <h4>2. Lecture: Scoping </h4>
+        <h4>3. Lecture: The this keyword </h4>
+        
+        
+        <h3>The Execution Context in Detail</h3>
+        <p> The Global Execution Context contains:</p>
+        <ul>
+            <li>Variable Object(VO)</li>
+            <li>Scope Chain</li>
+            <li>'this' Variable</li>
+        </ul> 
+        
+        <h4>1. Creation Phase</h4>
+        <ol>
+            <li> Creation of VO</li>        
+            <li> Creation of Scope Chain</li>        
+            <li> Determin value of 'this' variable</li>
+        </ol>
+        <h4>2. Execution Phase</h4>
+        <p>
+            Code of the function that generated the current execution context is ran line by line         
+        </p>
+        
+        <h4>A. Variable Object (VO)</h4>
+        <ul>
+            <li> The argument object is created, containing all the arguments that were passed into the function</li>        
+            <li> Code is scanned for function declarations: for each function a property is created in the Variable Object, pointing to the function</li>        
+            <li> Code is scanned for variable declarations: for each variable, a property is created in the Variable Object, and set to undefined</li>
+            <li> The above two key points together is called 'HOISTING'</li>
+        </ul>
+        
+        <script src="script.js"></script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Section 5: Advanced JavaScript: Objects and Functions</title>
+</head>
+
+<body>
+    <h1>Section 5: Advanced JavaScript: Objects and Functions</h1>
+    <h3>Inheritance in JavaScript</h3>
+    <ul>
+        <li>Every JavaScript object has a
+            <strong> prototype property</strong>, which makes inheritance possible.</li>
+        <li>The prototype property of an object is where we put the methods and properties that we want other objects to inherit.</li>
+        <li>The constructor's prototype property is NOT the property of constructor itself, it's the property of all instances
+            that are created through it</li>
+        <li>When a certain property or method is called, the search starts in the object itself, and if it cannot be found, the
+            search moves on to the object's prototype. This continues until the method is found: prototype chain.</li>
+        <li> var john = new Person("John", 1990, "teacher");</li>
+        <li>
+            <h4>How it works ??? </h4>
+            <ul>
+                <li> This above method is called
+                    <strong> INSTANTIATION</strong>, because we are creating an
+                    <strong>instance object</strong> john of the
+                    <strong>function constructor</strong> object Person. here we are using a
+                    <strong> 'new'</strong> operator.</li>
+                <li>It creates a brand new empty object</li>
+                <li>Then a constructor function Person is called and as we know calling a function creates a new execution context
+                    which also has a 'this' variable</li>
+                <li>We know in regular function call the 'this' variable points to the global object, but as we are creating
+                    an empty object john which is an instance of the function constructor, the 'new' operator makes sure
+                    that in this case the 'this' variable points to the new empty object john and not the global object</li>
+                <li>If the constructor function does not return anything, then the result is simply an empty object that was
+                    created in the first step.</li>
+                <li>Now this empty object has the properties that we defined in the Person function constructor and then all
+                    those properties are assigned to the john variable. </li>
+            </ul>
+
+            <li>
+                <h4>Comparing the function constructor and Object.create Methods:</h4>
+                <ul>
+                    <li>The difference between Object.create and function constructor prototype is that Object.create builds
+                        directly from the one that is passed as an argument. While on the other hand the function constructor
+                        the newly created object inherits from the constructors prototype property.</li>
+                    <li>One of the biggest benefits of Object.create is that it allows us to implement a really complex inheritance
+                        structure in an easier way because it directly specify which object should be a prototype. </li>
+                    <li>but the most widely used is still a function constructor</li>
+                </ul>
+            </li>
+            <li>
+                <h4>Primitives vs Objects: </h4>
+                <ul>
+                    <li>We know that basically only Numbers, Strings, Boolean, Undefined and Null are primitives and everything
+                        else is objects</li>
+                    <li>So a big difference between primitives and objects is that variables containing primitives actually hold
+                        that data inside the variable itself while Variables associated with objects do not actually contain
+                        the object, but instead they contain a reference to the place in memeory where the object is actually
+                        stored. </li>
+                    <li>
+                        <h5> Primitives and Objects as function arguments</h5>
+                        <p> >> When we pass a
+                            <strong> primitive variable</strong> into a function as an argument it just
+                            <strong>creates a copy</strong> of it and even if we change it in function multiple times
+                            <strong>its value remains unchanged outside the function</strong>.</p>
+                        <p> >> When we pass an
+                            <strong>Object variable</strong> into a function as an argument we simply
+                            <strong>pass the reference</strong> to the memory location where the object is stored. Thats why when
+                            we change the value of city inside the function it directly makes changes in the same memory
+                            location where the obj is stored and
+                            <strong>it gets reflected outside the function</strong>.</p>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <h4>Functions in JavaScript</h4>
+                <ul>
+                    <li>Function in JavaScript is instance of the Object type;</li>
+                    <li> A function behaves like any other object;</li>
+                    <li>We can store function in a variable;</li>
+                    <li>We can pass a function as an argument to another function;</li>
+                    <li>We can return a function from a function */</li>
+                </ul>
+            </li>
+            <li>
+                <h4>Passing Functions as an argument to other Functions</h4>
+            </li>
+            <li>
+                <h4>Functions returning Functions</h4>
+                <ul>
+                    <li>here we are going to create a function which creates different interview questions for different jobs</li>
+                    <li>for each job we will return a function that builds a string using the persons name as an input</li>
+                </ul>
+            </li>
+            <li>
+                <h4>IIFE: Immediately Invoked Function Expressions</h4>
+                <ul>
+                    <li>It provides Data Privacy</li>
+                    <li>IIFE is an anonymous function always written in paranthesis ()</li>
+                    <li>If we write something like this: function(){ //code } - without a name</li>
+                    <li>then Javascript parser will consider it as a function declaration, but since we dont have a name to the
+                        function it will throw an error</li>
+                    <li>So we basically need to trick the parser and make it believe that this is an expression and not a declaration</li>
+                    <li>Solution to this is to wrap the entire thing into the paranthesis</li>
+                    <li>Because in javascript whats inside a paranthesis can not be a statement, and thus it will treat this
+                        as an expression and not as a declaration</li>
+                    <li>Then after tricking the parser we only have to invoke the function because if we dont do it, then it
+                        will never be called and it wont do anything, and since we dont attach this to a variable nothing
+                        would happen</li>
+                    <li>This is how IIFE works and we can no longer access the score variable from outside the function </li>
+                    <li>In this way we have created data privacy here</li>
+                    <li>We can also pass an argument to the IIFE</li>
+                </ul>
+            </li>
+            <li>
+                <h4>Closures: </h4>
+                <ul>
+                    <li>We pass the value to the outer function and after executing the function it returns another function
+                        which we are storing in a variable;</li>
+                    <li>Then we are calling this function which is stored in variable and passing the parameters to it;</li>
+                    <li>What is fascinating here is that even after the execution of the outer function is completed and </li>
+                    <li>its pop out of the execution stack we are still able to access its parameter-retirementAge and variable-a
+                        in the inner function</li>
+                    <li>Somehow we are able to access these variables even after the execution of outer function is stopped and
+                        this is because of the concept of CLOSURES;</li>
+                    <li>Closures Summery:
+                        <ul>
+                            <li>An inner function always has the access to the variables and parameters of its outer function,
+                                even after the outer function has returned</li>
+                            <li> All this happened because the fact that whenever after execution of a function is completed and
+                                its execution context is poped out of the execution stack, its variables and parameters are
+                                stored in memory and still present for access of its lexically defined functions scope chain.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </li>
+    </ul>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
